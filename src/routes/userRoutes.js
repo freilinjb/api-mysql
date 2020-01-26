@@ -6,6 +6,10 @@ module.exports = function(app) {
             res.status(200).json(data);
         });
     });
+
+    app.post('/users', (req, res) => {
+        console.log(req.body);
+    });
 }
 
 ////Otra forma de hacerlo
