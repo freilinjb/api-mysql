@@ -24,4 +24,21 @@ userModel.getUsers = (callback) => {
     }
 };
 
+userModel.insertUser = (userData, callback) => {
+    if (connection) {
+        connection.query(
+            'INSERT INTO users SET ?', userData,
+            (err, result) => {
+                if (err) {
+                    throw err;
+                } else {
+                    callback(null, {
+                        'InsertId': result.insertId
+                    })
+                }
+            }
+        )
+    }
+};
+
 module.exports = userModel;
